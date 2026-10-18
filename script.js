@@ -2,23 +2,23 @@
   'use strict';
 
   const PRODUCTS = [
-    { id: 1,  name: 'Luminária de Mesa Arco', category: 'Casa', price: 189.9, icon: '💡', color: '#f2b134', desc: 'Luminária com haste articulada e luz quente regulável.', specs: ['Altura: 45 cm', 'Lâmpada LED inclusa', 'Cabo de 1,8 m'] },
-    { id: 2,  name: 'Vaso Cerâmica Terra', category: 'Casa', price: 79.0, icon: '🪴', color: '#7fb685', desc: 'Vaso esmaltado à mão, ideal para suculentas e ervas.', specs: ['Diâmetro: 16 cm', 'Furo para drenagem', 'Acompanha prato'] },
-    { id: 3,  name: 'Manta de Algodão Listrada', category: 'Casa', price: 149.5, icon: '🛋️', color: '#e07a5f', desc: 'Manta macia e leve para sofá ou cama.', specs: ['130 × 180 cm', '100% algodão', 'Lavável na máquina'] },
-    { id: 4,  name: 'Caderno Pautado A5', category: 'Escritório', price: 34.9, icon: '📓', color: '#3d5a80', desc: 'Capa dura, 160 páginas de papel que não mancha.', specs: ['Formato A5', 'Papel 90 g/m²', 'Marcador de fita'] },
-    { id: 5,  name: 'Organizador de Mesa Madeira', category: 'Escritório', price: 119.0, icon: '🗂️', color: '#b08968', desc: 'Divisórias para canetas, cartões e celular.', specs: ['Madeira de reflorestamento', '5 compartimentos', '28 × 12 cm'] },
-    { id: 6,  name: 'Cadeira Ergonômica Flex', category: 'Escritório', price: 899.0, icon: '🪑', color: '#4a5568', desc: 'Encosto em tela, ajuste de altura e apoio lombar.', specs: ['Suporta até 120 kg', 'Rodízios silenciosos', 'Garantia fictícia de 2 anos'] },
-    { id: 7,  name: 'Fone Bluetooth Sonar', category: 'Tecnologia', price: 329.9, icon: '🎧', color: '#6c5ce7', desc: 'Fone sem fio com cancelamento de ruído e microfone.', specs: ['Bateria de 30 h', 'Bluetooth 5.3', 'Carregamento USB-C'] },
-    { id: 8,  name: 'Carregador Sem Fio Disco', category: 'Tecnologia', price: 99.9, icon: '🔌', color: '#0f8b8d', desc: 'Base de carga rápida para celulares compatíveis.', specs: ['15 W', 'Base antiderrapante', 'Cabo incluso'] },
-    { id: 9,  name: 'Teclado Mecânico Compacto', category: 'Tecnologia', price: 459.0, icon: '⌨️', color: '#2d3436', desc: 'Layout 75%, switches táteis e teclas PBT.', specs: ['Conexão USB e Bluetooth', 'Teclas em PBT', 'Layout ABNT2'] },
-    { id: 10, name: 'Jogo de Facas Chef', category: 'Cozinha', price: 249.0, icon: '🔪', color: '#a0aec0', desc: 'Três facas de aço inox com cabo ergonômico.', specs: ['Aço inox', 'Lavagem manual', 'Bloco de madeira'] },
-    { id: 11, name: 'Cafeteira Prensa Francesa', category: 'Cozinha', price: 89.9, icon: '☕', color: '#8d6e63', desc: 'Jarra de vidro borossilicato com filtro de aço.', specs: ['Capacidade: 600 ml', 'Vidro resistente', 'Fácil de limpar'] },
-    { id: 12, name: 'Tábua de Corte Bambu', category: 'Cozinha', price: 64.5, icon: '🥖', color: '#c9a227', desc: 'Tábua dupla face com canaleta para líquidos.', specs: ['40 × 28 cm', 'Bambu natural', 'Pés antiderrapantes'] }
+    { id: 1,  name: 'Bolo de Morango com Chantilly', category: 'Bolos e tortas', price: 89.9, icon: '🍰', color: '#f9a8c0', desc: 'Massa fofinha, recheio de creme e morangos frescos.', specs: ['Serve até 10 fatias', 'Peso: 1,2 kg', 'Encomendar com 2 dias de antecedência'] },
+    { id: 2,  name: 'Torta de Limão Siciliano', category: 'Bolos e tortas', price: 69.0, icon: '🥧', color: '#fbd38d', desc: 'Base crocante, creme cítrico e cobertura de merengue.', specs: ['Serve 8 fatias', 'Peso: 900 g', 'Manter refrigerada'] },
+    { id: 3,  name: 'Caixa de Cupcakes (6 un.)', category: 'Bolos e tortas', price: 49.5, icon: '🧁', color: '#f4a6d7', desc: 'Seis cupcakes de baunilha com cobertura de buttercream rosa.', specs: ['6 unidades', 'Sabor baunilha', 'Embalagem para presente'] },
+    { id: 4,  name: 'Brigadeiro Gourmet (12 un.)', category: 'Docinhos', price: 42.0, icon: '🍫', color: '#b5838d', desc: 'Brigadeiros de chocolate belga enrolados à mão.', specs: ['12 unidades', 'Chocolate 50% cacau', 'Validade: 7 dias'] },
+    { id: 5,  name: 'Beijinho de Coco (12 un.)', category: 'Docinhos', price: 38.0, icon: '🥥', color: '#ffc8dd', desc: 'Docinho cremoso de coco com cravo na ponta.', specs: ['12 unidades', 'Coco ralado fresco', 'Validade: 7 dias'] },
+    { id: 6,  name: 'Mini Donuts Glaceados (6 un.)', category: 'Docinhos', price: 29.9, icon: '🍩', color: '#ff8fab', desc: 'Donuts pequenos com glacê de morango e confeitos.', specs: ['6 unidades', 'Glacê de morango', 'Melhor consumo no mesmo dia'] },
+    { id: 7,  name: 'Cookies de Chocolate (6 un.)', category: 'Biscoitos', price: 32.0, icon: '🍪', color: '#d4a5a5', desc: 'Cookies macios por dentro, com gotas de chocolate.', specs: ['6 unidades de 60 g', 'Gotas de chocolate meio amargo', 'Validade: 10 dias'] },
+    { id: 8,  name: 'Macarons Rosa (8 un.)', category: 'Biscoitos', price: 54.9, icon: '🍥', color: '#f8b4d9', desc: 'Casquinhas delicadas recheadas com ganache de framboesa.', specs: ['8 unidades', 'Sem glúten (fictício)', 'Manter refrigerados'] },
+    { id: 9,  name: 'Biscoitos Amanteigados (250 g)', category: 'Biscoitos', price: 24.5, icon: '🥠', color: '#fcd5ce', desc: 'Biscoitinhos de manteiga que derretem na boca.', specs: ['Pacote de 250 g', 'Receita da casa', 'Validade: 30 dias'] },
+    { id: 10, name: 'Bombons Recheados (12 un.)', category: 'Chocolates', price: 59.9, icon: '🍬', color: '#e5989b', desc: 'Caixa com recheios de morango, caramelo e pistache.', specs: ['12 bombons', '3 sabores', 'Caixa presenteável'] },
+    { id: 11, name: 'Chocolate Quente Cremoso (200 g)', category: 'Chocolates', price: 36.9, icon: '☕', color: '#c98b9b', desc: 'Mistura em pó para um chocolate quente espesso e doce.', specs: ['Rende 8 xícaras', 'Basta adicionar leite quente', 'Pote de 200 g'] },
+    { id: 12, name: 'Barra de Chocolate ao Leite', category: 'Chocolates', price: 18.9, icon: '🍫', color: '#ffafcc', desc: 'Barra de 100 g com 40% de cacau e leite integral.', specs: ['100 g', '40% cacau', 'Sem conservantes (fictício)'] }
   ];
 
   const $ = (s) => document.querySelector(s);
   const money = (v) => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-  const CART_KEY = 'oficina-carrinho';
+  const CART_KEY = 'docerosa-carrinho';
 
   // Imagem fictícia gerada em SVG (sem arquivos externos).
   const image = (p) => 'data:image/svg+xml;utf8,' + encodeURIComponent(
