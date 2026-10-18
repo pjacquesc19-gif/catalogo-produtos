@@ -1,70 +1,63 @@
-# Doce Rosa – Catálogo de doces (demo)
+# Delícias da Jac – Catálogo digital 2026
 
-Catálogo fictício de uma confeitaria, em **HTML, CSS e JavaScript puro**, sem backend, sem build e sem dependências. Serve para testar fluxos comerciais básicos e é compatível com GitHub Pages.
+Site estático em **HTML, CSS e JavaScript puro**, sem backend e sem dependências, compatível com GitHub Pages. Os produtos e preços vêm da planilha do catálogo 2026.
+
+## Arquivos
+
+```
+index.html    Estrutura da página
+style.css     Identidade visual (cores centralizadas em variáveis CSS no :root)
+produtos.js   Fonte única de dados: loja, categorias e produtos
+script.js     Cards, filtros, busca, seletores de variação e WhatsApp
+img/          Pasta para as fotos dos produtos
+```
 
 ## Funcionalidades
 
-- 12 doces em 4 categorias (Bolos e tortas, Docinhos, Biscoitos, Chocolates), com imagem, preço e descrição.
-- Paleta rosada, com tons de framboesa e chocolate para texto e destaques.
-- Busca por nome, descrição ou categoria.
-- Filtro por categoria.
-- Ordenação por menor preço, maior preço, nome (A–Z) ou destaques.
-- Janela de detalhes com descrição completa e especificações.
-- Carrinho simulado: adicionar, aumentar/diminuir quantidade, remover, esvaziar e total em R$. O carrinho fica salvo no `localStorage` do navegador.
-- Layout responsivo, foco visível no teclado e respeito a `prefers-reduced-motion`.
+- 8 categorias, cada uma com título, descrição e seus produtos. A barra de categorias rola na horizontal no celular; ao tocar numa categoria, só ela é exibida ("Todos" mostra tudo).
+- Busca por nome do produto (ignora acentos) e ordenação por preço.
+- Cards com foto, nome, preço em destaque, pedido mínimo, descrição curta, seletores de variação (o preço atualiza na hora), quantidade e observações.
+- "Ver detalhes" abre as informações extras dentro do próprio card.
+- "Solicitar pelo WhatsApp" abre `https://wa.me/5521985075217` com mensagem codificada: produto, variação, quantidade, recheio e observações.
+- Seção "Informações sobre pedidos", botão de WhatsApp em destaque, rodapé com Instagram e WhatsApp e botão de voltar ao topo.
 
-As imagens são ilustrações SVG geradas pelo próprio `script.js`, então o site funciona offline e não depende de links externos.
+## Como editar os produtos
 
-## Estrutura
+Tudo está em `produtos.js`; o visual não precisa ser alterado.
 
-```
-index.html   Estrutura da página
-style.css    Estilos e responsividade
-script.js    Dados dos produtos, filtros, detalhes e carrinho
-README.md    Este arquivo
-```
+- **Produto simples:** `price`, `minimumQuantity`, `quantity`, `notes`.
+- **Produto com variações:** `selectors` (um seletor por tipo de opção, ex.: Tamanho e Laço) e `variants` (cada uma com `label`, `options`, `price`, `minimumQuantity`). Quando uma variação não tem `minimumQuantity`, nenhum mínimo é exigido.
+- **Recheios:** `flavors`. Com `flavorChoice: 'one'` o cliente escolhe o recheio; com um único recheio ele entra direto na mensagem; nos demais casos a lista é apenas exibida.
 
-## Como testar localmente
+### Fotos
 
-1. Baixe os quatro arquivos para a mesma pasta.
-2. Abra `index.html` no navegador (duplo clique). Se preferir um servidor local: `python3 -m http.server 8000` e acesse `http://localhost:8000`.
+Ainda não há fotos no projeto. Cada card mostra uma imagem provisória, identificada como "Foto provisória". Para usar uma foto real, salve o arquivo em `img/` e preencha `images` no produto, por exemplo `images: ['img/brownie.jpg']`. O selo some automaticamente. Use fotos na proporção 4:3 para evitar cortes. Só a primeira foto da lista é usada.
 
-### Roteiro de teste
+## Como testar
 
-| Ação | Resultado esperado |
-|---|---|
-| Digitar "macarons" na busca | Aparece apenas Macarons Rosa |
-| Digitar "xyz" | Mensagem de nenhum resultado e botão "Limpar filtros" |
-| Escolher categoria "Chocolates" | 3 produtos |
-| Ordenar por "Menor preço" | Barra de Chocolate (R$ 18,90) vem primeiro e Bolo de Morango (R$ 89,90) por último |
-| Clicar em "Detalhes" | Abre janela com especificações; `Esc` fecha |
-| Adicionar 2× a Barra de Chocolate e 1× os Macarons | Contador = 3; total = R$ 92,70 |
-| Recarregar a página | Itens do carrinho continuam |
-| Finalizar compra | Carrinho esvaziado e aviso de pedido simulado |
+1. Abra `index.html` no navegador ou rode `python3 -m http.server 8000` e acesse `http://localhost:8000`.
+2. Toque em **Brownies**: só essa categoria aparece. Escolha **5 cm** e **Com laço**: o preço muda para R$ 6,30 e o mínimo passa a "não informado".
+3. Em **4 cm**, tente quantidade 5: ela volta para 10 com aviso de pedido mínimo.
+4. Escolha o recheio e clique em **Solicitar pelo WhatsApp**. A mensagem deve citar produto, quantidade e recheio.
+5. Em **Macarons → Torre de macarons**, troque tamanho e suporte e confira preço e quantidade de macarons.
+6. Em **Torres e Mini Suspiros → Mini suspiros**, confira o mínimo de 500 g (2 pacotes).
+7. Busque "pirulito": só os pirulitos aparecem. Busque "xyz": aparece a mensagem de nada encontrado.
+8. Reduza a janela (ou use o modo celular do navegador) e confira a barra de categorias com rolagem horizontal.
 
 ## Publicação no GitHub Pages
 
-1. Crie um repositório no GitHub (ex.: `doce-rosa`).
-2. Envie os quatro arquivos para a raiz do repositório:
+1. Crie um repositório e envie todos os arquivos para a raiz:
    ```bash
-   git init
-   git add .
-   git commit -m "Catálogo de produtos"
+   git init && git add . && git commit -m "Catálogo Delícias da Jac"
    git branch -M main
-   git remote add origin https://github.com/SEU-USUARIO/doce-rosa.git
+   git remote add origin https://github.com/SEU-USUARIO/SEU-REPOSITORIO.git
    git push -u origin main
    ```
-3. No repositório, abra **Settings → Pages**.
-4. Em **Build and deployment**, escolha **Deploy from a branch**, selecione a branch `main` e a pasta `/ (root)`, e salve.
-5. Aguarde alguns minutos. O site ficará em `https://SEU-USUARIO.github.io/doce-rosa/`.
+2. Em **Settings → Pages**, escolha **Deploy from a branch**, branch `main`, pasta `/ (root)`.
+3. O site ficará em `https://SEU-USUARIO.github.io/SEU-REPOSITORIO/`. Os caminhos são relativos.
 
-Todos os caminhos são relativos, então o site funciona em subpastas sem ajustes.
+## Observações sobre os dados
 
-## Personalização
-
-- **Produtos:** edite o array `PRODUCTS` no início de `script.js` (campos `name`, `category`, `price`, `icon`, `color`, `desc`, `specs`). Novas categorias aparecem sozinhas no filtro.
-- **Cores e fontes:** altere as variáveis em `:root` no `style.css` (`--accent`, `--sun` e `--bg` definem os rosas).
-
-## Aviso
-
-Todos os doces, preços e marcas são fictícios. Nenhum pagamento é processado.
+- Todos os preços, mínimos, recheios e condições vêm da planilha. Nada foi estimado.
+- Brownie de 5 cm: a planilha não informa mínimo para essa opção (só indica que o mínimo aparece junto ao brownie de 4 cm). Por isso, o site não exige mínimo para o 5 cm. Se o mínimo de 10 valer para os dois, basta incluir `minimumQuantity: 10` nas duas variações de 5 cm.
+- A planilha usa "Suspiro 3D" e "Suspiro modelado", sem o termo "2D". O catálogo manteve esses nomes.
